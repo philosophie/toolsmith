@@ -18,4 +18,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 3.2.11"
 
   s.add_development_dependency "rspec-rails", "~> 2.11.0"
+  s.add_development_dependency "guard-rspec", "~> 2.3.3"
+  s.add_development_dependency "rb-fsevent", "~> 0.9.1"
+  s.add_development_dependency "nokogiri", "~> 1.5.6"
 end
