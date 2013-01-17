@@ -1,5 +1,6 @@
-/*
-*= require bootstrap
-*= require bootstrap_and_overrides
+/*=
 *= require_tree ./toolsmith
 */
+
+@import "bootstrap";
+@import "toolsmith/variables"
