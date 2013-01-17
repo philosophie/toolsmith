@@ -16,6 +16,8 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
   s.add_dependency "rails", "~> 3.2.11"
+  s.add_dependency "compass-rails", "~> 1.0.3"
+  s.add_dependency "bootstrap-sass", "~> 2.2.1.1"
 
   s.add_development_dependency "rspec-rails", "~> 2.11.0"
   s.add_development_dependency "guard-rspec", "~> 2.3.3"

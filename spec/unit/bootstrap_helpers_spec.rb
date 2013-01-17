@@ -6,27 +6,8 @@ describe Toolsmith::ViewHelpers::BootstrapHelpers do
     Proc.new { "content" }
   end
 
-  context "#bootstrap_stylesheet" do
-    it "returns the stylsheet link tag" do
-      element = to_element subject.bootstrap_stylesheet, "link"
-      expect(element[:href]).to eq "/assets/bootstrap.min.css"
-    end
-
-    it "returns the responsive version" do
-      element = to_element subject.bootstrap_stylesheet(responsive: true), "link"
-      expect(element[:href]).to eq "/assets/bootstrap-responsive.min.css"
-    end
-  end
-
-  context "#bootstrap_javascript" do
-    it "returns the javascript script" do
-      element = to_element subject.bootstrap_javascript, "script"
-      expect(element[:src]).to eq "/assets/bootstrap.min.js"
-    end
-  end
-
   context "#row" do
-    let(:element) { to_element subject.row(&content_block), "div" }
+    let(:element) { subject.row(&content_block).to_element }
     it "renders a row with a class" do
       expect(element[:class]).to eq "row"
     end
