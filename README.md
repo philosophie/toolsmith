@@ -1,10 +1,10 @@
-= Toolsmith
+# Toolsmith
 
 A crafty tool to craft crafty UI's.
 
 ### Install
 
-In your gemfile, specify the pricvate gem source. You can find our private source in http://know.gophilosophie.com
+In your gemfile, specify the private gem source. You can find our private source in http://know.gophilosophie.com
 
 ```ruby
 if ENV["TOOLSMITH_GEM_URL"]
@@ -26,3 +26,24 @@ Then...
 ```bundle install```
 
 Profit.
+
+
+### Usage
+
+When including toolsmith CSS and JS, you automatically get Bootstrap for free.
+
+#### CSS
+
+In your application.scss file, include an import directive like so:
+
+```sass
+import "toolsmith";
+```
+
+You also have ```toolsmith-responsive``` has an option.
+
+#### Javascript
+
+```js
+#= require toolsmith
+```
