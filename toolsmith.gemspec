@@ -7,9 +7,9 @@ require "toolsmith/version"
 Gem::Specification.new do |s|
   s.name        = "toolsmith"
   s.version     = Toolsmith::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
+  s.authors     = ["Robert Ross"]
+  s.email       = ["bobby@gophilosophie.com"]
+  s.homepage    = "http://gophilosophie.com"
   s.summary     = "A gem to craft UI's easily."
   s.description = "Toolsmith provides common helpers for UI components and styles."
 
