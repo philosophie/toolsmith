@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ["TODO: Your name"]
   s.email       = ["TODO: Your email"]
   s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Toolsmith."
-  s.description = "TODO: Description of Toolsmith."
+  s.summary     = "A gem to craft UI's easily."
+  s.description = "Toolsmith provides common helpers for UI components and styles."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
