@@ -3,15 +3,6 @@ module Toolsmith
     module BootstrapHelpers
       FLASH_LEVELS = [:success, :error, :notice]
 
-      def bootstrap_stylesheet(options={})
-        responsive = options.fetch(:responsive, false)
-        stylesheet_link_tag responsive ? "bootstrap-responsive.min.css" : "bootstrap.min.css"
-      end
-
-      def bootstrap_javascript
-        javascript_include_tag "bootstrap.min.js"
-      end
-
       def row(&block)
         content_tag(:div, class: "row", &block)
       end
