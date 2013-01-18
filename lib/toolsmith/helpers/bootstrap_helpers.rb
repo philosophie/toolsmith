@@ -3,23 +3,6 @@ module Toolsmith
     module BootstrapHelpers
       FLASH_LEVELS = [:success, :error, :notice]
 
-      def row(&block)
-        content_tag(:div, class: "row", &block)
-      end
-
-      def column(width, options = {}, &block)
-        classes = %W[span#{width}]
-        classes << "offset#{options[:offset]}" if options[:offset]
-
-        content_tag(:div, class: classes,  &block)
-      end
-
-      def full_width_column(&block)
-        row do
-          column(12, &block)
-        end
-      end
-
       def page_header(primary_content = nil, secondary_content = nil, &block)
         full_width_column do
           content_tag(:div, class: "page-header") do

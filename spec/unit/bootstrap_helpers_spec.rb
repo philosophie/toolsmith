@@ -6,34 +6,6 @@ describe Toolsmith::ViewHelpers::BootstrapHelpers do
     Proc.new { "content" }
   end
 
-  context "#row" do
-    let(:element) { subject.row(&content_block).to_element }
-    it "renders a row with a class" do
-      expect(element[:class]).to eq "row"
-    end
-
-    it "renders a row with content" do
-      expect(element.text).to eq("content")
-    end
-  end
-
-  context "#column" do
-    it "renders a column with correct width" do
-      element = to_element subject.column(3, &content_block), "div"
-      expect(element[:class]).to eq("span3")
-    end
-
-    it "renders a column with an offset" do
-      element = to_element subject.column(3, offset: 2, &content_block), "div"
-      expect(element[:class]).to include "offset2"
-    end
-
-    it "renders a column with content" do
-      element = to_element subject.column(3, &content_block), "div"
-      expect(element.text).to eq("content")
-    end
-  end
-
   context "#form_actions" do
     let(:element) { to_element subject.form_actions(&content_block), "div" }
     
