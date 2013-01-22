@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.0.5
+
+* Fixes bug that broke JavaScripts
+
 ## v0.0.4
 
 * Move stylesheets to app from vendor
