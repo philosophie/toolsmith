@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.0.4
+
+* Move stylesheets to app from vendor
+
 ## v0.0.3
 
 * Change SCSS files to have .css.scss extension
