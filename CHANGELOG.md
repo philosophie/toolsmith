@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.0.3
+
+* Change SCSS files to have .css.scss extension
+
 ## v0.0.2
 
 * Misc. improvements
