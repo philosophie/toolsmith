@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    toolsmith (0.0.1)
+    toolsmith (0.0.3)
       bootstrap-sass (~> 2.2.1.1)
       compass-rails (~> 1.0.3)
       rails (~> 3.2.11)
