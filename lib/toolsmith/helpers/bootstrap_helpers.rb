@@ -3,20 +3,6 @@ module Toolsmith
     module BootstrapHelpers
       FLASH_LEVELS = [:success, :error, :notice]
 
-      def page_header(primary_content = nil, secondary_content = nil, &block)
-        full_width_column do
-          content_tag(:div, class: "page-header") do
-            if primary_content
-              content_tag(:h1) do
-                raw primary_content + " " + content_tag(:small, secondary_content)
-              end
-            else
-              content_tag(:h1, &block)
-            end
-          end
-        end
-      end
-
       def form_actions(&block)
         content_tag(:div, class: "form-actions", &block)
       end
