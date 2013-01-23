@@ -2,12 +2,17 @@ require "spec_helper"
 
 describe Toolsmith::Views::PageHeader do
   let(:view_context) { AbstractActionView.new }
-  subject { described_class.new(view_context) }
+  subject { described_class.new(view_context, "New Title") }
 
-  context ".new_with_title" do
+  context "#initialize" do
     it "initializes with a title" do
-      header = described_class.new_with_title(view_context, "New Title")
+      header = described_class.new(view_context, "New Title")
       expect(header.title).to eq("New Title")
+    end
+
+    it "initializes with a subtitle" do
+      header = described_class.new(view_context, "New Title", "Subtitle!")
+      expect(header.subtitle).to eq("Subtitle!")
     end
   end
 
@@ -15,6 +20,13 @@ describe Toolsmith::Views::PageHeader do
     it "can be set" do
       subject.title = "New Title"
       expect(subject.title).to eq("New Title")
+    end
+  end
+
+  context "#subtitle" do
+    it "can be set" do
+      subject.subtitle = "New subtitle"
+      expect(subject.subtitle).to eq("New subtitle")
     end
   end
 
@@ -42,11 +54,21 @@ describe Toolsmith::Views::PageHeader do
   end
 
   context "#to_s" do
-    subject { described_class.new_with_title(view_context, "Title") }
+    subject { described_class.new(view_context, "Title", "Subtitle") }
     let(:element) { Nokogiri::HTML(subject.to_s) }
 
     before do
       subject.button title: "Click me!", icon: "plus-sign", path: "/"
+    end
+
+    it "renders a h1 with the title" do
+      h1 = element.at_css("h1")
+      expect(h1.text).to include "Title"
+    end
+
+    it "renders a h1 with a subtitle" do
+      subtitle = element.at_css("h1 small")
+      expect(subtitle.text).to eq("Subtitle")
     end
 
     it "renders a content block with a button group" do

@@ -1,12 +1,13 @@
 module Toolsmith
   module Views
     class PageHeader < Base
-      attr_accessor :title
+      attr_accessor :title, :subtitle
 
-      def self.new_with_title(context, title)
-        new(context).tap do |header|
-          header.title = title
-        end
+      def initialize(context, title, subtitle=nil)
+        super(context)
+
+        @title = title
+        @subtitle = subtitle
       end
 
       def button(options)
@@ -18,8 +19,18 @@ module Toolsmith
         @buttons ||= []
       end
 
+      def full_title
+        if subtitle
+          content_tag(:h1) do
+            ERB::Util.h(title) + content_tag(:small, subtitle)
+          end
+        else
+          content_tag(:h1, title)
+        end
+      end
+
       def to_s
-        ERB::Util.html_escape(title) + content_tag(:div, nil, class: "pull-right") do
+        full_title + content_tag(:div, nil, class: "pull-right") do
           content_tag(:div, class: "btn-group") do
             buttons.map do |button|
               context.link_to(button[:path], class: "btn", title: button[:title]) do
