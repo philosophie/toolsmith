@@ -72,22 +72,15 @@ describe Toolsmith::Views::PageHeader do
     end
 
     it "renders a content block with a button group" do
-      button_group = element.at_css("div.btn-group")
-      expect(button_group.at_css("a.btn")).to be_present
+      expect(subject.to_s).to have_tag "h1 div.pull-right div.btn-group"
     end
 
-    it "renders a button group with buttons" do
-      button_group = element.at_css("div.btn-group")
-      button = element.at_css("a.btn")
-
-      expect(button[:class]).to eq("btn")
-      expect(button[:title]).to eq("Click me!")
+    it "renders a content block with buttons in a button group" do
+      expect(subject.to_s).to have_tag "h1 div.pull-right div.btn-group a.btn"
     end
 
-    it "renders buttons with icons" do
-      button_group = element.at_css("div.btn-group")
-      button = element.at_css("a.btn")
-      expect(button.at_css("i.icon-plus-sign")).to be_present
+    it "renders an icon in a button" do
+      expect(subject.to_s).to have_tag "a.btn i.icon-plus-sign"
     end
   end
 end
