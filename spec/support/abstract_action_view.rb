@@ -7,4 +7,8 @@ class AbstractActionView < ActionView::Base
     self.request ||= self.controller.request
     self.params ||= {}
   end
+
+  def inspect
+    "<#{self.class}>"
+  end
 end
