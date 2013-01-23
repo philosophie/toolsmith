@@ -4,6 +4,7 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require "toolsmith"
 require "nokogiri"
+require "awesome_print"
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
