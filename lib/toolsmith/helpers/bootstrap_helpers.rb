@@ -12,52 +12,7 @@ module Toolsmith
       end
 
       def flash_div(level)
-        FlashDiv.new(self, level)
-      end
-
-      # Renders a bootstrap-style alert message. Doesn't yet support levels.
-      class FlashDiv
-        attr_reader :context, :level
-
-        def initialize(context, level)
-          @context = context
-          @level = level
-        end
-
-        def to_html
-          if context.flash[level].present?
-            container do
-              close_link + context.flash[level].html_safe
-            end
-          end
-        end
-
-        def close_link
-          context.link_to(
-            close_link_text,
-            "#",
-            class: "close",
-            data: {
-              dismiss: "alert"
-            }
-          )
-        end
-
-        def close_link_text
-          context.raw("&times;")
-        end
-
-        def container
-          context.full_width_column do
-            context.content_tag "div", class: "alert" do
-              yield
-            end
-          end
-        end
-
-        def to_s
-          to_html
-        end
+        Toolsmith::Views::FlashDiv.new(self, level)
       end
     end
   end

@@ -7,6 +7,7 @@ module Toolsmith
   module Views
     autoload :Base, "toolsmith/views/base"
     autoload :PageHeader, "toolsmith/views/page_header"
+    autoload :FlashDiv, "toolsmith/views/flash_div"
   end
 
   MissingParameter = Class.new(StandardError)
