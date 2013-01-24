@@ -36,7 +36,7 @@ module Toolsmith
             content_tag(:div, class: "btn-group") do
               buttons.map do |button|
                 button_markup(button)
-              end.inject("".html_safe, :+)
+              end.html_join
             end
           end + full_title
         end
