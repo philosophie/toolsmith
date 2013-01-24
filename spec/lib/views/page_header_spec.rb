@@ -53,6 +53,26 @@ describe Toolsmith::Views::PageHeader do
     end
   end
 
+  context "#button_markup" do
+    let(:options) { {title: "Click me!", icon: "plus-sign", path: "/"} }
+
+    it "renders a button with an icon" do
+      button = subject.button_markup(options)
+      expect(button).to have_tag "a.btn i.icon-plus-sign"
+    end
+
+    it "renders a link with a path" do
+      button = subject.button_markup(options).to_element
+      expect(button[:href]).to eq(options[:path])
+    end
+
+    it "accepts anchor options" do
+      options[:anchor] = { method: :delete }
+      button = subject.button_markup(options).to_element
+      expect(button["data-method"]).to eq("delete")
+    end
+  end
+
   context "#to_s" do
     subject { described_class.new(view_context, "Title", "Subtitle") }
     let(:element) { Nokogiri::HTML(subject.to_s) }

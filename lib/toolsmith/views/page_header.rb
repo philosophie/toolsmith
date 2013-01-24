@@ -15,6 +15,13 @@ module Toolsmith
         buttons << options
       end
 
+      def button_markup(options)
+        anchor_options = options.fetch(:anchor, {})
+        context.link_to options[:path], anchor_options.merge(class: "btn"), title: options[:title] do
+          content_tag :i, "", class: "icon-#{options[:icon]}"
+        end
+      end
+
       def buttons
         @buttons ||= []
       end
@@ -28,9 +35,7 @@ module Toolsmith
           content_tag(:div, nil, class: "pull-right") do
             content_tag(:div, class: "btn-group") do
               buttons.map do |button|
-                context.link_to(button[:path], class: "btn", title: button[:title]) do
-                  content_tag(:i, "", class: "icon-#{button[:icon]}")
-                end
+                button_markup(button)
               end.inject("".html_safe, :+)
             end
           end + full_title
