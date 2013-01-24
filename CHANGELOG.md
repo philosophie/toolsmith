@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.0.6
+
+* Change functionality of Page Headers. Not backwards compatible.
+
 ## v0.0.5
 
 * Fixes bug that broke JavaScripts
