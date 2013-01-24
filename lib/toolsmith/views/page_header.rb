@@ -27,7 +27,7 @@ module Toolsmith
       end
 
       def full_title
-        subtitle ? ERB::Util.h(title) + content_tag(:small, subtitle) : ERB::Util.h(title)
+        subtitle ? "#{ERB::Util.h(title)} #{content_tag(:small, self.subtitle)}".html_safe : ERB::Util.h(title)
       end
 
       def to_s
