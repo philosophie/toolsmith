@@ -31,7 +31,7 @@ module Toolsmith
       end
 
       def to_s
-        content_tag(:h1) do
+        content_tag(:h1, class: "page-header") do
           content_tag(:div, nil, class: "pull-right") do
             content_tag(:div, class: "btn-group") do
               buttons.map do |button|
