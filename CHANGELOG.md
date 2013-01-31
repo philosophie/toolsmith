@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.0.8
+
+* Add default variable definitions.
+
 ## v0.0.7
 
 * Allow rows, fullwidth columns, and page headers to get fluid-rows.
