@@ -3,7 +3,7 @@ module Toolsmith
     module PageHeaderHelpers
       def page_header(title, *args, &block)
         options = args.extract_options!
-        subtitle = options.first
+        subtitle = args.first
 
         header = Toolsmith::Views::PageHeader.new(self, title, subtitle)
         yield header if block_given?
