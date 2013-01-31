@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.0.7
+
+* Allow rows, fullwidth columns, and page headers to get fluid-rows.
+
 ## v0.0.6
 
 * Change functionality of Page Headers. Not backwards compatible.
