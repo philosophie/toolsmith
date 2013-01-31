@@ -12,6 +12,11 @@ describe Toolsmith::ViewHelpers::GridHelpers do
       expect(element[:class]).to eq "row"
     end
 
+    it "renders a fluid row" do
+      fluid_element = subject.row({fluid: true}, &content_block).to_element
+      expect(fluid_element[:class]).to eq "row-fluid"
+    end
+
     it "renders a row with content" do
       expect(element.text).to eq("content")
     end
@@ -40,6 +45,11 @@ describe Toolsmith::ViewHelpers::GridHelpers do
 
       expect(doc.at_css("div.row")).to be_present
       expect(doc.at_css("div.row div.span12")).to be_present
+    end
+
+    it "renders a fluid 12 wide column" do
+      string = Nokogiri::HTML(subject.full_width_column({fluid: true}, &content_block)).to_s
+      expect(string).to have_tag "div.row-fluid div.span12"
     end
   end
 end

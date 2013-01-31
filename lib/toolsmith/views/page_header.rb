@@ -1,13 +1,14 @@
 module Toolsmith
   module Views
     class PageHeader < Base
-      attr_accessor :title, :subtitle
+      attr_accessor :title, :subtitle, :options
 
-      def initialize(context, title, subtitle=nil)
+      def initialize(context, title, *args)
         super(context)
 
+        @options = args.extract_options!
         @title = title
-        @subtitle = subtitle
+        @subtitle = args.first
       end
 
       def button(options)

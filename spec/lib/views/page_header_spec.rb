@@ -14,6 +14,13 @@ describe Toolsmith::Views::PageHeader do
       header = described_class.new(view_context, "New Title", "Subtitle!")
       expect(header.subtitle).to eq("Subtitle!")
     end
+
+    it "initializes with options" do
+      options = {fluid: true}
+      header = described_class.new(view_context, "Title", options)
+      expect(header.options).to eq options
+      expect(header.subtitle).to be_nil
+    end
   end
 
   context "#title" do

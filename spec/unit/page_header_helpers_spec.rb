@@ -22,6 +22,10 @@ describe Toolsmith::ViewHelpers::PageHeaderHelpers do
         expect(subject.page_header("title")).to have_tag "div.row div.span12"
       end
 
+      it "a fluid full width column" do
+        expect(subject.page_header("title", {fluid: true})).to have_tag "div.row-fluid"
+      end
+
       it "a header within the full width column" do
         markup = subject.page_header("title").to_s.to_element
         expect(markup.at_css("div.span12").inner_html).to eq(page_header.to_s)
