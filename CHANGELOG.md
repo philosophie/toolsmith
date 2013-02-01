@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.0.9
+
+* Fix Definition List to include `dl-horizontal` class.
+* Fix Page Header to be wrapped in a `page-header` class.
+
 ## v0.0.8
 
 * Add default variable definitions.
