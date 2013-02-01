@@ -17,8 +17,9 @@ describe Toolsmith::Views::DefinitionList do
       subject.define "Term", "Description"
     end
 
-    it "renders a definition list tag" do
+    it "renders a definition list tag with a class" do
       expect(element.node_name).to eq("dl")
+      expect(element[:class]).to eq("dl-horizontal")
     end
 
     it "renders a definition term within the list tag" do

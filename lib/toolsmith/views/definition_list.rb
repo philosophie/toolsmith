@@ -12,7 +12,7 @@ module Toolsmith
       end
 
       def to_s
-        content_tag :dl, list_body
+        content_tag :dl, list_body, class: "dl-horizontal"
       end
 
       private
