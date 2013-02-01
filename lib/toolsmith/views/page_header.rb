@@ -32,14 +32,23 @@ module Toolsmith
       end
 
       def to_s
+        content_tag :div, h1_tag, class: "page-header"
+      end
+
+      private
+
+      def h1_tag
         content_tag(:h1) do
-          content_tag(:div, nil, class: "pull-right") do
-            content_tag(:div, class: "btn-group") do
-              buttons.map do |button|
-                button_markup(button)
-              end.html_join
-            end
-          end + full_title
+          content_tag(:div, button_group, class: "pull-right") +
+            full_title
+        end
+      end
+
+      def button_group
+        content_tag(:div, class: "btn-group") do
+          buttons.map do |button|
+            button_markup(button)
+          end.html_join
         end
       end
     end

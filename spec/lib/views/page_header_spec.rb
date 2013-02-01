@@ -88,6 +88,10 @@ describe Toolsmith::Views::PageHeader do
       subject.button title: "Click me!", icon: "plus-sign", path: "/"
     end
 
+    it "renders an h1 within a page header class" do
+      expect(subject.to_s).to have_tag "div.page-header h1"
+    end
+
     it "renders a h1 with the title" do
       h1 = element.at_css("h1")
       expect(h1.text).to include "Title"
