@@ -7,15 +7,15 @@ require "toolsmith/version"
 Gem::Specification.new do |s|
   s.name        = "toolsmith"
   s.version     = Toolsmith::VERSION
-  s.authors     = ["Robert Ross"]
-  s.email       = ["bobby@gophilosophie.com"]
+  s.authors     = ["Robert Ross", "Brendan Loudermilk"]
+  s.email       = ["bobby@gophilosophie.com", "brendan@gophilosophie.com"]
   s.homepage    = "http://gophilosophie.com"
   s.summary     = "A gem to craft UI's easily."
   s.description = "Toolsmith provides common helpers for UI components and styles."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["Rakefile", "README.md", "CHANGELOG.md"]
 
-  s.add_dependency "rails", "~> 3.2.11"
+  s.add_dependency "rails", ">= 3.2.11", "< 4.1"
   s.add_dependency "compass-rails", "~> 1.0.3"
   s.add_dependency "bootstrap-sass", "~> 2.2.2.0"
 
