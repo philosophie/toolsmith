@@ -4,21 +4,10 @@ A crafty tool to craft crafty UI's.
 
 ### Install
 
-In your gemfile, specify the private gem source. You can find our private source in http://know.gophilosophie.com
-
-```ruby
-if ENV["TOOLSMITH_GEM_URL"]
-  source ENV["TOOLSMITH_GEM_URL"]
-else
-  raise "Missing ENV var \"TOOLSMITH_GEM_URL\". Please see the README"
-end
-
-```
-
 In your projects gemfile, slap this in there:
 
 ```
-gem "toolsmith", "~> 0.0.1"
+gem "toolsmith"
 ```
 
 Then...
@@ -30,7 +19,7 @@ Profit.
 
 ### Usage
 
-When including toolsmith CSS and JS, you automatically get Bootstrap for free.
+When including toolsmith CSS and JS, you automatically get the Bootstrap CSS / JS for free as well.
 
 #### CSS
 
@@ -40,10 +29,28 @@ In your application.scss file, include an import directive like so:
 import "toolsmith";
 ```
 
-You also have ```toolsmith-responsive``` has an option.
+You also have ```toolsmith-responsive``` has an option, which includes `bootstrap-responsive` and any other responsive designs provided.
 
 #### Javascript
 
 ```js
 #= require toolsmith
 ```
+
+
+### What do I get?
+
+Toolsmith's aim is to provide very common UI components with simple methods. Things like Page Headers, Flash messages, etc...
+
+As an example:
+
+```ruby
+<%= page_header "Projects", @project.name do |header| %>
+  <% header.button title: "Edit", path: edit_project_path(@project), icon: "pencil" %>
+  <% header.button title: "Delete", path: project_path(@project), icon: "trash", anchor: anchor: { method: :delete, confirm: "Are you sure?" } %>
+<% end %>
+
+```
+
+Gives you something like this for free:
+![Page Header Example](http://i.imgur.com/ycXzDR1.png)
