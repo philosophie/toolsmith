@@ -44,7 +44,7 @@ Toolsmith's aim is to provide very common UI components with simple methods. Thi
 
 As an example:
 
-```ruby
+```erb
 <%= page_header "Projects", @project.name do |header| %>
   <% header.button title: "Edit", path: edit_project_path(@project), icon: "pencil" %>
   <% header.button title: "Delete", path: project_path(@project), icon: "trash", anchor: anchor: { method: :delete, confirm: "Are you sure?" } %>
