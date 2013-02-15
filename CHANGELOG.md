@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.0.10
+
+* Definition list now captures all marup within it.
+* Definition list helper method is now `definition_list` instead of `definitions`
+
 ## v0.0.9
 
 * Fix Definition List to include `dl-horizontal` class.
