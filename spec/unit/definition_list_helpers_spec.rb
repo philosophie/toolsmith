@@ -10,6 +10,10 @@ describe Toolsmith::ViewHelpers::DefinitionListHelpers do
   end
 
   context "#definition_list" do
+    it "accepts options" do
+      expect { subject.definition_list(wut: true) }.not_to raise_error
+    end
+
     it "captures buffered content" do
       content = subject.definition_list(&content_block).to_s
 
