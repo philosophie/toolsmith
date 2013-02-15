@@ -9,7 +9,7 @@ module Toolsmith
       end
 
       def define(term, description)
-        content_tag(:dt, term) + content_tag(:dd, description)
+        content_tag(:dt, term) + content_tag(:dd, description || " ")
       end
 
       def to_s

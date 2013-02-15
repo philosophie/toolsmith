@@ -20,9 +20,14 @@ describe Toolsmith::Views::DefinitionList do
 
   context "#define" do
     it "returns a definition" do
-      definition = Nokogiri::HTML(subject.define("Term", "Description"))
-      expect(definition.at_xpath("//dt[contains(text(), 'Term')]")).to be_present
-      expect(definition.at_xpath("//dd[contains(text(), 'Description')]")).to be_present
+      definition = subject.define("Term", "Description")
+      expect(definition).to have_xpath "//dt[contains(text(), 'Term')]"
+      expect(definition).to have_xpath "//dd[contains(text(), 'Description')]"
+    end
+
+    it "replaces with a space if definition is nil" do
+      definition = subject.define("Term", nil)
+      expect(definition).to have_xpath("//dd[contains(., ' ')]")
     end
   end
 
