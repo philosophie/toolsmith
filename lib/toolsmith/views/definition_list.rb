@@ -1,26 +1,20 @@
 module Toolsmith
   module Views
     class DefinitionList < Base
-      Definition = Struct.new(:term, :description)
+      attr_reader :content_block
 
-      def definitions
-        @definitions ||= []
+      def initialize(context, &block)
+        @content_block = block if block_given?
+        super(context, &nil)
       end
 
       def define(term, description)
-        definitions << Definition.new(term, description)
+        content_tag(:dt, term) + content_tag(:dd, description)
       end
 
       def to_s
-        content_tag :dl, list_body, class: "dl-horizontal"
-      end
-
-      private
-
-      def list_body
-        definitions.map do |definition|
-          "#{content_tag :dt, definition.term}#{content_tag :dd, definition.description}".html_safe
-        end.html_join
+        content = context.capture(self, &content_block)
+        content_tag :dl, content
       end
     end
   end

@@ -2,20 +2,22 @@ require "spec_helper"
 
 describe Toolsmith::ViewHelpers::DefinitionListHelpers do
   subject { AbstractActionView.new }
-
-  context "#definitions" do
-    let(:definition_list) { double("dl") }
-
-    before do
-      Toolsmith::Views::DefinitionList.should_receive(:new).with(subject).and_return(definition_list)
+  let(:content_block) do
+    Proc.new do |dl|
+      subject.output_buffer << dl.define("Term", "Definition")
+      subject.output_buffer << "<dt>Another</dt><dd>Definition 2</dd>".html_safe
     end
+  end
 
-    it "yields a defintion list object" do
-      expect {|b| subject.definitions &b }.to yield_with_args(definition_list)
-    end
+  context "#definition_list" do
+    it "captures buffered content" do
+      content = subject.definition_list(&content_block).to_s
 
-    it "returns a definition list object" do
-      expect(subject.definitions).to be definition_list
+      expect(content).to have_xpath "//dl/dt[contains(., 'Term')]"
+      expect(content).to have_xpath "//dl/dd[contains(., 'Definition')]"
+
+      expect(content).to have_xpath "//dl/dt[contains(., 'Another')]"
+      expect(content).to have_xpath "//dl/dd[contains(., 'Definition 2')]"
     end
   end
 end

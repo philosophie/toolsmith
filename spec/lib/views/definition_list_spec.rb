@@ -2,32 +2,38 @@ require "spec_helper"
 
 describe Toolsmith::Views::DefinitionList do
   let(:view_context) { AbstractActionView.new }
+  let(:content_block) do
+    Proc.new {|dl| dl.define("Term", "Definition") }
+  end
+
   subject { described_class.new(view_context) }
 
+  context "#initialize" do
+    it "accepts a view" do
+      expect { described_class.new(subject) }.not_to raise_error
+    end
+
+    it "accepts a block" do
+      expect { described_class.new(subject, &content_block) }.not_to raise_error
+    end
+  end
+
   context "#define" do
-    it "adds a definition" do
-      expect { subject.define "Term", "Definition" }.to change(subject.definitions, :size).from(0).to(1)
+    it "returns a definition" do
+      definition = Nokogiri::HTML(subject.define("Term", "Description"))
+      expect(definition.at_xpath("//dt[contains(text(), 'Term')]")).to be_present
+      expect(definition.at_xpath("//dd[contains(text(), 'Description')]")).to be_present
     end
   end
 
   context "#to_s" do
-    let(:element) { subject.to_s.to_element }
-
-    before do
-      subject.define "Term", "Description"
+    let(:definition_list) do
+      described_class.new(view_context, &content_block)
     end
 
-    it "renders a definition list tag with a class" do
-      expect(element.node_name).to eq("dl")
-      expect(element[:class]).to eq("dl-horizontal")
-    end
-
-    it "renders a definition term within the list tag" do
-      expect(subject.to_s).to have_tag "dl dt"
-    end
-
-    it "renders a definition description within the list tag" do
-      expect(subject.to_s).to have_tag "dl dd"
+    it "captures the block with definitions" do
+      view_context.should_receive(:capture).with(instance_of(definition_list.class)).once
+      definition_list.to_s
     end
   end
 end
