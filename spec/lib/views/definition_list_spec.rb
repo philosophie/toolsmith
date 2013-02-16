@@ -1,3 +1,5 @@
+# -*- encoding: UTF-8 -*-
+
 require "spec_helper"
 
 describe Toolsmith::Views::DefinitionList do
@@ -30,14 +32,9 @@ describe Toolsmith::Views::DefinitionList do
       expect(definition).to have_xpath "//dd[contains(text(), 'Description')]"
     end
 
-    it "replaces with a space if definition is nil" do
-      definition = subject.define("Term", nil)
-      expect(definition).to have_xpath("//dd[contains(., ' ')]")
-    end
-
-    it "replaces with a space if definition is empty" do
-      definition = subject.define("Term", "")
-      expect(definition).to have_xpath("//dd[contains(., ' ')]")
+    pending "replaces with a space if definition is empty" do
+      definition = to_element(subject.define("Term", ""), "dd").text
+      expect(definition).to eq(" ")
     end
   end
 

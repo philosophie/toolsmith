@@ -12,7 +12,7 @@ module Toolsmith
       end
 
       def define(term, description)
-        description = description.blank? ? " " : description
+        description = description.blank? ? "&nbsp;".html_safe : description
         content_tag(:dt, term) + content_tag(:dd, description)
       end
 
