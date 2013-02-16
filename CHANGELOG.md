@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.0.12
+
+* Blank definition lists will now render a &nbsp;
+
 ## v0.0.11
 
 * Definition list will make empty values into a single space.
