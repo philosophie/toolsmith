@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.0.11
+
+* Definition list will make empty values into a single space.
+
 ## v0.0.10
 
 * Definition list now captures all marup within it.
