@@ -12,7 +12,8 @@ module Toolsmith
       end
 
       def define(term, description)
-        content_tag(:dt, term) + content_tag(:dd, description || " ")
+        description = description.blank? ? " " : description
+        content_tag(:dt, term) + content_tag(:dd, description)
       end
 
       def to_s
