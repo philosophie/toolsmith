@@ -40,23 +40,28 @@ describe Toolsmith::Views::PageHeader do
   context "#button" do
     let(:options) { {title: "Click me!", icon: "plus-sign", path: "/"} }
 
-    it "requires a title" do
-      options[:title] = nil
-      expect { subject.button options }.to raise_error Toolsmith::MissingParameter
-    end
-
-    it "requires a icon" do
-      options[:icon] = nil
-      expect { subject.button options }.to raise_error Toolsmith::MissingParameter
-    end
-
-    it "requires a path" do
-      options[:path] = nil
-      expect { subject.button options }.to raise_error Toolsmith::MissingParameter
-    end
-
     it "adds to the header's buttons" do
       expect { subject.button options }.to change(subject.buttons, :size).from(0).to(1)
+    end
+
+    context "with multiple arguments" do
+      let(:arguments) { ["Title", "/path", "icon"] }
+
+      it "accepts explicit arguments" do
+        expect { subject.button *arguments }.not_to raise_error
+      end
+
+      it "accepts options for a button with multiple arguments" do
+        button = subject.button(*arguments, anchor: {class: "btn btn-primary"})
+        expect(button).to have_key :anchor
+      end
+
+      it "assigns the keys for button options" do
+        button = subject.button(*arguments, anchor: {class: "btn btn-primary"})
+        expect(button[:title]).to eq "Title"
+        expect(button[:path]).to eq "/path"
+        expect(button[:icon]).to eq "icon"
+      end
     end
   end
 
@@ -108,6 +113,10 @@ describe Toolsmith::Views::PageHeader do
 
     it "renders a content block with buttons in a button group" do
       expect(subject.to_s).to have_tag "h1 div.pull-right div.btn-group a.btn"
+    end
+
+    it "renders a button link with a title" do
+      expect(subject.to_s).to have_tag "h1 div.pull-right div.btn-group a.btn[title='Click me!']"
     end
 
     it "renders an icon in a button" do

@@ -11,14 +11,16 @@ module Toolsmith
         @subtitle = args.first
       end
 
-      def button(options)
-        [:title, :icon, :path].each { |param| missing_parameter(param, options) }
-        buttons << options
+      def button(*args)
+        button_options = args.size >= 3 ? button_options(*args) : args.shift
+        buttons << button_options
+
+        button_options
       end
 
       def button_markup(options)
         anchor_options = options.fetch(:anchor, {})
-        context.link_to options[:path], anchor_options.merge(class: "btn"), title: options[:title] do
+        context.link_to options[:path], anchor_options.merge(class: "btn", title: options[:title]) do
           content_tag :i, "", class: "icon-#{options[:icon]}"
         end
       end
@@ -50,6 +52,10 @@ module Toolsmith
             button_markup(button)
           end.html_join
         end
+      end
+
+      def button_options(title, path, icon, options={})
+        options.merge(title: title, path: path, icon: icon)
       end
     end
   end
