@@ -11,6 +11,11 @@ describe Toolsmith::Views::DefinitionListFor do
     expect(subject).to respond_to :object=
   end
 
+  it "has an options attribute" do
+    expect(subject).to respond_to :options
+    expect(subject).to respond_to :options=
+  end
+
   context ".new_with_object" do
     it "instantiates and sets the object on the instance" do
       definition_list = described_class.new_with_object(view_context, object)
@@ -40,6 +45,20 @@ describe Toolsmith::Views::DefinitionListFor do
       definition_list = subject.to_s
       expect(definition_list).to have_xpath "//dl/dt[contains(., 'Attribute name')]"
       expect(definition_list).to have_xpath "//dl/dd[contains(., 'Attribute Value')]"
+    end
+  end
+
+  context "options" do
+    let(:content_block) { ->(dl) { dl.define :attribute_name } }
+    subject { described_class.new_with_object(view_context, object, &content_block) }
+
+    it "defaults to a horizontal class" do
+      expect(subject.to_s).to have_xpath "//dl[contains(@class, 'dl-horizontal')]"
+    end
+
+    it "can turn off horizontal class" do
+      subject.options[:horizontal] = false
+      expect(subject.to_s).to have_xpath "//dl[not(@class)]"
     end
   end
 end

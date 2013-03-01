@@ -1,11 +1,14 @@
 module Toolsmith
   module Views
     class DefinitionListFor < Base
-      attr_accessor :object
+      attr_accessor :object, :options
       attr_reader :content_block
+
+      DEFAULT_OPTIONS = { horizontal: true }
 
       def initialize(context, &block)
         @content_block = block if block_given?
+        @options = DEFAULT_OPTIONS
         super(context, &nil)
       end
 
@@ -23,7 +26,13 @@ module Toolsmith
 
       def to_s
         content = context.capture(self, &content_block)
-        content_tag :dl, content
+        content_tag :dl, content, dl_options
+      end
+
+      def dl_options
+        {
+          class: options[:horizontal] ? "dl-horizontal" : nil
+        }
       end
     end
   end
