@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.0.13
+
+* Add definition_list_for helper for creating lists with only attribute names.
+* Code cleanup
+
 ## v0.0.12
 
 * Blank definition lists will now render a &nbsp;
