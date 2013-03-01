@@ -8,7 +8,7 @@ module Toolsmith
 
       def initialize(context, &block)
         @content_block = block if block_given?
-        @options = DEFAULT_OPTIONS
+        @options = DEFAULT_OPTIONS.dup
         super(context, &nil)
       end
 

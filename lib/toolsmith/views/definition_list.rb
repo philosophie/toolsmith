@@ -1,13 +1,13 @@
 module Toolsmith
   module Views
     class DefinitionList < Base
-      DEFAULT_CLASS = "dl-horizontal"
+      DEFAULT_OPTIONS = { horizontal: true }
 
       attr_reader :content_block, :options
 
       def initialize(context, options={}, &block)
         @content_block = block if block_given?
-        @options = options
+        @options = DEFAULT_OPTIONS.merge(options)
         super(context, &nil)
       end
 
@@ -24,7 +24,9 @@ module Toolsmith
       private
 
       def dl_options
-        { class: !options[:horizontal] ? DEFAULT_CLASS : "" }
+        {
+          class: options[:horizontal] ? "dl-horizontal" : nil
+        }
       end
     end
   end
