@@ -16,5 +16,11 @@ describe Toolsmith::ViewHelpers::DefinitionListForHelpers do
       expect(dl).to have_xpath("//dl/dt[contains(., 'Attribute name')]")
       expect(dl).to have_xpath("//dl/dd[contains(., 'value')]")
     end
+
+    it "takes options" do
+      options = {horizontal: false}
+      dl = subject.definition_list_for(object, options, &content_block)
+      expect(dl.options).to eq(options)
+    end
   end
 end
