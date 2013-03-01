@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.0.14
+
+* Adds more flexibility to the PageHeader#button method to allow definition of button properties based on arguments.
+  For Example:
+
+  ```ruby
+  header.button "Title", "/path", "icon"
+  ```
+
+  This change is backwards compatible with the hash structure option.
+
 ## v0.0.13
 
 * Add definition_list_for helper for creating lists with only attribute names.
