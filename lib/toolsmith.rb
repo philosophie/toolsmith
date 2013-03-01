@@ -11,6 +11,7 @@ module Toolsmith
     autoload :PageHeader, "toolsmith/views/page_header"
     autoload :FlashDiv, "toolsmith/views/flash_div"
     autoload :DefinitionList, "toolsmith/views/definition_list"
+    autoload :DefinitionListFor, "toolsmith/views/definition_list_for"
   end
 
   MissingParameter = Class.new(StandardError)
