@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.0.15
+
+* Fix an issue with doubling yielding on definition_list_for blocks.
+
 ## v0.0.14
 
 * Adds more flexibility to the PageHeader#button method to allow definition of button properties based on arguments.
