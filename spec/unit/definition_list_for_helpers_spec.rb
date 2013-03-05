@@ -7,7 +7,7 @@ describe Toolsmith::ViewHelpers::DefinitionListForHelpers do
 
   context "#definition_list_for" do
     it "yields a definition list for object" do
-      expect {|b| subject.definition_list_for(object, &b) }.to yield_with_args(instance_of(Toolsmith::Views::DefinitionListFor))
+      expect {|b| subject.definition_list_for(object, &b).to_s }.to yield_with_args(instance_of(Toolsmith::Views::DefinitionListFor))
     end
 
     it "returns the content of the definition list when calling #to_s" do
@@ -21,6 +21,13 @@ describe Toolsmith::ViewHelpers::DefinitionListForHelpers do
       options = {horizontal: false}
       dl = subject.definition_list_for(object, options, &content_block)
       expect(dl.options).to eq(options)
+    end
+
+    it "only renders definitions once" do
+      dl = subject.definition_list_for(object, &content_block).to_s
+
+      dom = Nokogiri::HTML(dl)
+      expect(dom.css("dt").length).to be 1
     end
   end
 end
