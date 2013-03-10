@@ -1,7 +1,7 @@
 module Toolsmith
   module ViewHelpers
     module BootstrapHelpers
-      FLASH_LEVELS = [:success, :error, :notice]
+      FLASH_LEVELS = [:success, :error, :notice, :alert]
 
       def form_actions(&block)
         content_tag(:div, class: "form-actions", &block)

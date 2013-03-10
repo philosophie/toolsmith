@@ -2,8 +2,9 @@ module Toolsmith
   module Views
     class FlashDiv < Base
       LEVEL_MAPPING = {
-        error: :error, 
-        success: :success, 
+        error: :error,
+        alert: :error,
+        success: :success,
         notice: :info
       }
 
