@@ -50,7 +50,7 @@ describe Toolsmith::ViewHelpers::BootstrapHelpers do
       end
 
       divs = Nokogiri::HTML(subject.flash_divs).css("div.alert")
-      expect(divs.size).to eq(3)
+      expect(divs.size).to eq(4)
     end
   end
 end
