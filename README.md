@@ -2,45 +2,48 @@
 
 A crafty tool to craft crafty UI's.
 
-### Install
+## Install
 
-In your projects gemfile, slap this in there:
+Add Toolsmith to your gemfile:
 
-```
+```ruby
 gem "toolsmith"
 ```
 
 Then...
 
-```bundle install```
+```bash
+$ bundle install
+```
 
-Profit.
+## Usage
 
+When including toolsmith CSS and JS, you automatically get the Bootstrap CSS /
+JS for free as well.
 
-### Usage
-
-When including toolsmith CSS and JS, you automatically get the Bootstrap CSS / JS for free as well.
-
-#### CSS
+### SCSS
 
 In your application.scss file, include an import directive like so:
 
 ```sass
-import "toolsmith";
+@import "toolsmith";
 ```
 
-You also have ```toolsmith-responsive``` has an option, which includes `bootstrap-responsive` and any other responsive designs provided.
+You also have `toolsmith-responsive` as an option, which includes
+`bootstrap-responsive`.
 
-#### Javascript
+### CoffeeScript
 
-```js
+```coffeescript
 #= require toolsmith
 ```
 
+## What do I get?
 
-### What do I get?
-
-Toolsmith's aim is to provide very common UI components with simple methods. Things like Page Headers, Flash messages, etc...
+Toolsmith's aim is to provide very common UI components with simple methods.
+Things like Page Headers, Flash messages, etc. It's basically an abstraction
+on top of Bootstrap, which seems ridiculous but actually results in cleaner,
+more consistent interfaces and codebases.
 
 As an example:
 
@@ -54,3 +57,5 @@ As an example:
 
 Gives you something like this for free:
 ![Page Header Example](http://i.imgur.com/ycXzDR1.png)
+
+Clearly we have a lot more documentation to write.
