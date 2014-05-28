@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["Rakefile", "README.md", "CHANGELOG.md"]
 
-  s.add_dependency "rails", ">= 3.2.11", "< 4.1"
+  s.add_dependency "rails", ">= 3.2.11"
   s.add_dependency "compass-rails", "~> 1.0.3"
   s.add_dependency "bootstrap-sass", "~> 2.3.1.0"
 
